@@ -1,4 +1,4 @@
-package com.classes;
+package com.model;
 
 public class Items {
     private int itemCode;

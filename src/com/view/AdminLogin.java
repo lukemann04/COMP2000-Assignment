@@ -1,4 +1,4 @@
-package com.gui;
+package com.view;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class AdminLogin extends JFrame{
@@ -46,7 +45,7 @@ public class AdminLogin extends JFrame{
                             } else{txtErrorText.setText("Incorrect Password");}
                         }
                     }
-                    if(userFound = false) {
+                    if(userFound == false) {
                         txtErrorText.setText("User not found.");
                     }
                     reader.close();
