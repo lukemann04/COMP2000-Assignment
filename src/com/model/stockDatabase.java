@@ -25,15 +25,14 @@ public class stockDatabase {
     }
 
     public void replenishStock(Integer rStockCode, Integer rStockQuantity) {
-        //String returnValue = "";
-        String id = "";
-        String name = "";
-        String quantity = "";
+        //String id = "";
+        //String name = "";
+        //String quantity = "";
         Integer n = 0;
-        Integer m = 0;
+        //Integer m = 0;
         Integer found = 0;
         Integer k = null;
-        String tempValue = "";
+        //String tempValue = "";
 
         try {
             Scanner reader = new Scanner(stockFile);
@@ -69,39 +68,24 @@ public class stockDatabase {
         {
             temp[k + 3] = String.valueOf(Integer.parseInt(temp[k + 3]) + rStockQuantity);
         }
-    }
 
-        /*try {
-            FileWriter fw = new FileWriter(stockFile, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            PrintWriter pw = new PrintWriter(bw);
-            x = new Scanner(stockFile);
-            x.useDelimiter("[,\n]");
+        try
+        {
+            PrintWriter pr = new PrintWriter(stockFile);
 
-            while(x.hasNext()){
-                id = x.next().trim();
-                if(id.equals(String.valueOf(rStockCode))){
-                        x.next();
-                        x.next();
-                        quantity = x.next().trim();
-                        x.remove();
-                        pw.append(String.valueOf((Integer.parseInt(quantity) + rStockQuantity)));
-                        break;
-                }
-
+            for (int i=0; i<temp.length ; i++)
+            {
+                pr.println(temp[i]);
             }
-            pw.flush();
-            bw.flush();
-            fw.flush();
-            fw.close();
-
-        } catch (FileNotFoundException e) {
+            pr.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
             System.out.println("An error occurred.");
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
+        }
 
+    }
 
     public void readStock() {
         try {
@@ -116,6 +100,23 @@ public class stockDatabase {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+
+    public void addStockItem(String nCode, String nName, String nPrice, String nQuantity) {
+        try (FileWriter f = new FileWriter(stockFile, true);
+             BufferedWriter b = new BufferedWriter(f);
+             PrintWriter p = new PrintWriter(b);) {
+            p.println("");
+            p.println(nCode);
+            p.println(nName);
+            p.println(nPrice);
+            p.println(nQuantity);
+
+            p.flush();
+        } catch
+        (IOException i) { i.printStackTrace();
+        }
+
     }
 
     public ArrayList<String> searchStock(Integer searchCode) {

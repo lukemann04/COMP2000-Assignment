@@ -3,7 +3,7 @@ Apple
 1.50
 25
 1
-Bannana
+Banana
 1.25
 30
 2

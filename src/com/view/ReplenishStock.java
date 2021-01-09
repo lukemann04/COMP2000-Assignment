@@ -24,6 +24,8 @@ public class ReplenishStock extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 stockDatabase addStock = new stockDatabase();
                 addStock.replenishStock(Integer.parseInt(txtStockCode.getText()), Integer.parseInt(txtQuantity.getText()));
+                JOptionPane.showMessageDialog(mainPanel, "Stock Replenished.");
+                setVisible(false);
             }
         });
     }

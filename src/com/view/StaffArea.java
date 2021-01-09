@@ -36,5 +36,18 @@ public class StaffArea extends JFrame{
 
             }
         });
+        addNewItemButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddNewStock page = new AddNewStock();
+                page.setVisible(true);
+            }
+        });
+        removeItemButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }
