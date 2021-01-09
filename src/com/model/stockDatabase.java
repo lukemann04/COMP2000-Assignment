@@ -1,7 +1,8 @@
 package com.model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import com.view.StaffArea;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,6 +13,8 @@ public class stockDatabase {
     public String itemName;
     public String itemPrice;
     public String itemQuantity;
+    public String[] temp = new String[0];
+    //private static Scanner x;
     File stockFile = new File("C:\\Users\\User\\Documents\\GitHub\\COMP2000-Assignment\\src\\com\\stockDatabase.txt");
 
     public void updateStock() {
@@ -20,6 +23,85 @@ public class stockDatabase {
         newStock.add(newItemPrice);*/
         stock.add(newStock);
     }
+
+    public void replenishStock(Integer rStockCode, Integer rStockQuantity) {
+        //String returnValue = "";
+        String id = "";
+        String name = "";
+        String quantity = "";
+        Integer n = 0;
+        Integer m = 0;
+        Integer found = 0;
+        Integer k = null;
+        String tempValue = "";
+
+        try {
+            Scanner reader = new Scanner(stockFile);
+            while (reader.hasNextLine()) {
+                n = temp.length;
+                String[] newTemp = new String[n + 1];
+
+                for (int i=0; i < temp.length; i++)
+                {
+                    newTemp[i] = temp[i];
+                }
+
+                String data = reader.nextLine();
+                newTemp[newTemp.length - 1] = data;
+                temp = newTemp;
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        for (int i=0; i < temp.length; i++)
+        {
+            if(temp[i].equals(String.valueOf(rStockCode)))
+            {
+                k = i;
+                found++;
+                break;
+            }
+        }
+        if(found > 0)
+        {
+            temp[k + 3] = String.valueOf(Integer.parseInt(temp[k + 3]) + rStockQuantity);
+        }
+    }
+
+        /*try {
+            FileWriter fw = new FileWriter(stockFile, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner(stockFile);
+            x.useDelimiter("[,\n]");
+
+            while(x.hasNext()){
+                id = x.next().trim();
+                if(id.equals(String.valueOf(rStockCode))){
+                        x.next();
+                        x.next();
+                        quantity = x.next().trim();
+                        x.remove();
+                        pw.append(String.valueOf((Integer.parseInt(quantity) + rStockQuantity)));
+                        break;
+                }
+
+            }
+            pw.flush();
+            bw.flush();
+            fw.flush();
+            fw.close();
+
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
 
     public void readStock() {
         try {

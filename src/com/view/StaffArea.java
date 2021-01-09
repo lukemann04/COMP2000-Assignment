@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import com.model.stockDatabase;
 
 public class StaffArea extends JFrame{
     private JPanel mainPanel;
@@ -24,6 +25,15 @@ public class StaffArea extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 //Close form
                 setVisible(false);
+            }
+        });
+
+        replenishStockButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ReplenishStock page = new ReplenishStock();
+                page.setVisible(true);
+
             }
         });
     }
