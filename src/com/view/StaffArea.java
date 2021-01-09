@@ -33,7 +33,6 @@ public class StaffArea extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 ReplenishStock page = new ReplenishStock();
                 page.setVisible(true);
-
             }
         });
         addNewItemButton.addActionListener(new ActionListener() {
@@ -46,7 +45,8 @@ public class StaffArea extends JFrame{
         removeItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                RemoveStockItem page = new RemoveStockItem();
+                page.setVisible(true);
             }
         });
     }

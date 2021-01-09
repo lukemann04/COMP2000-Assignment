@@ -87,6 +87,67 @@ public class stockDatabase {
 
     }
 
+    public void removeItem(Integer rStockCode) {
+        Integer n = 0;
+        Integer found = 0;
+        Integer k = null;
+
+        try {
+            Scanner reader = new Scanner(stockFile);
+            while (reader.hasNextLine()) {
+                n = temp.length;
+                String[] newTemp = new String[n + 1];
+
+                for (int i=0; i < temp.length; i++)
+                {
+                    newTemp[i] = temp[i];
+                }
+
+                String data = reader.nextLine();
+                newTemp[newTemp.length - 1] = data;
+                temp = newTemp;
+            }
+            reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        for (int i=0; i < temp.length; i++)
+        {
+            if(temp[i].equals(String.valueOf(rStockCode)))
+            {
+                k = i;
+                found++;
+                break;
+            }
+        }
+        if(found > 0)
+        {
+            temp[k] = "";
+            temp[k + 1] = "";
+            temp[k + 2] = "";
+            temp[k + 3] = "";
+        }
+
+        try
+        {
+            PrintWriter pr = new PrintWriter(stockFile);
+
+            for (int i=0; i<temp.length ; i++)
+            {
+                pr.println(temp[i]);
+            }
+            pr.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            System.out.println("An error occurred.");
+        }
+
+    }
+
     public void readStock() {
         try {
             Scanner reader = new Scanner(stockFile);
