@@ -19,6 +19,7 @@ public class KioskDisplay extends JFrame {
     private JButton btnCardPayment;
     private JButton btnClearItems;
     private JButton btnAdd;
+    DefaultListModel<String> model = new DefaultListModel<>();
 
     public KioskDisplay() {
         setContentPane(mainPanel);
@@ -30,7 +31,7 @@ public class KioskDisplay extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //Clear Items Array
-                //txtProductDetails.;
+                model.removeAllElements();
                 txtTotal.setText("");
             }
         });
@@ -45,13 +46,14 @@ public class KioskDisplay extends JFrame {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Search stock and add item to basket
                 stockDatabase itemSearch = new stockDatabase();
-                //ArrayList<ArrayList<String>> outputDetails = new ArrayList<>(3);
-                //outputDetails.add(itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText())));
-                JList<String> list = new JList<String>(itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText())).toArray(new String[itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText())).size()]));
-                txtProductDetails.add(list);
-                //txtProductDetails.add(itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText())).toArray(new String[itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText())).size()]));
-                //txtProductDetails.add(itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText())).get(1));
+                itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText()));
+                txtProductDetails.setModel(model);
+                model.addElement(itemSearch.itemCode);
+                model.addElement(itemSearch.itemName);
+                model.addElement(itemSearch.itemPrice);
+                model.addElement(itemSearch.itemQuantity);
             }
         });
     }

@@ -40,7 +40,7 @@ public class stockDatabase {
         ArrayList<String> itemDetails = new ArrayList<>();
         try {
             readStock();
-            Integer index = searchCode;
+            Integer index = searchCode * 4;
             Integer codeIndex = index;
             Integer nameIndex = index + 1;
             Integer priceIndex = index + 2;
