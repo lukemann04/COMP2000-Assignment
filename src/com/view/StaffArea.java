@@ -8,17 +8,19 @@ import com.model.stockDatabase;
 
 public class StaffArea extends JFrame{
     private JPanel mainPanel;
-    private JTextArea txtNeedsStock;
+    private JList txtNeedsStock;
     private JButton removeItemButton;
     private JButton addNewItemButton;
     private JButton replenishStockButton;
     private JButton btnLogOut;
+    DefaultListModel<String> model = new DefaultListModel<>();
 
     public StaffArea() {
         setContentPane(mainPanel);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setPreferredSize(new Dimension(500,500));
         pack();
+        checkStock();
 
         btnLogOut.addActionListener(new ActionListener() {
             @Override
@@ -27,7 +29,6 @@ public class StaffArea extends JFrame{
                 setVisible(false);
             }
         });
-
         replenishStockButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,5 +50,10 @@ public class StaffArea extends JFrame{
                 page.setVisible(true);
             }
         });
+    }
+    public void checkStock(){
+        stockDatabase check = new stockDatabase();
+        txtNeedsStock.setModel(model);
+        model.addAll(check.checkStock());
     }
 }

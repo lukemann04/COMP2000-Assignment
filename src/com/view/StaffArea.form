@@ -20,11 +20,9 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="dc00" class="javax.swing.JTextArea" binding="txtNeedsStock">
+          <component id="eb49c" class="javax.swing.JList" binding="txtNeedsStock">
             <constraints/>
-            <properties>
-              <editable value="false"/>
-            </properties>
+            <properties/>
           </component>
         </children>
       </scrollpane>

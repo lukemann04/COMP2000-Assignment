@@ -203,4 +203,35 @@ public class stockDatabase {
         }
         return itemDetails;
     }
+
+    public ArrayList<String> checkStock() {
+        ArrayList<String> needMoreItems = new ArrayList<>();
+        String tempCode;
+        String tempName;
+        String tempPrice;
+        String tempQuantity;
+        try {
+            readStock();
+            for (int i=0; i < newStock.size() - 3; i++)
+            {
+                tempCode = newStock.get(i);
+                tempName = newStock.get(i+1);
+                tempPrice = newStock.get(i+2);
+                tempQuantity = newStock.get(i+3);
+                i = i + 3;
+                if(Integer.parseInt(tempQuantity) < 10)
+                {
+                    needMoreItems.add("Code: " + tempCode);
+                    needMoreItems.add("Name: " + tempName);
+                    needMoreItems.add("Price: " + tempPrice);
+                    needMoreItems.add("Quantity: " + tempQuantity);
+                    break;
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return needMoreItems;
+    }
 }
