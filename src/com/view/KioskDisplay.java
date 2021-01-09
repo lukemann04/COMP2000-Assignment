@@ -20,6 +20,7 @@ public class KioskDisplay extends JFrame {
     private JButton btnClearItems;
     private JButton btnAdd;
     DefaultListModel<String> model = new DefaultListModel<>();
+    double total = 0.00;
 
     public KioskDisplay() {
         setContentPane(mainPanel);
@@ -50,10 +51,12 @@ public class KioskDisplay extends JFrame {
                 stockDatabase itemSearch = new stockDatabase();
                 itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText()));
                 txtProductDetails.setModel(model);
-                model.addElement(itemSearch.itemCode);
-                model.addElement(itemSearch.itemName);
-                model.addElement(itemSearch.itemPrice);
-                model.addElement(itemSearch.itemQuantity);
+                //model.addElement(itemSearch.itemCode);
+                model.addElement("Item: " + itemSearch.itemName);
+                model.addElement("Price: " +itemSearch.itemPrice);
+                //model.addElement(itemSearch.itemQuantity);
+                total = total + Double.parseDouble(itemSearch.itemPrice);
+                txtTotal.setText(String.valueOf(total));
             }
         });
     }

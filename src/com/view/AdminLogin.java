@@ -40,6 +40,7 @@ public class AdminLogin extends JFrame{
                             data = reader.nextLine();
                             if(data.equals(pwd)){
                                 //Load Staff Area
+                                setVisible(false);
                                 StaffArea page = new StaffArea();
                                 page.setVisible(true);
                             } else{txtErrorText.setText("Incorrect Password");}
