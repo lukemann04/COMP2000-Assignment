@@ -53,10 +53,24 @@ public class KioskDisplay extends JFrame {
                 txtProductDetails.setModel(model);
                 //model.addElement(itemSearch.itemCode);
                 model.addElement("Item: " + itemSearch.itemName);
-                model.addElement("Price: " +itemSearch.itemPrice);
+                model.addElement("Price: £" +itemSearch.itemPrice);
                 //model.addElement(itemSearch.itemQuantity);
                 total = total + Double.parseDouble(itemSearch.itemPrice);
-                txtTotal.setText(String.valueOf(total));
+                txtTotal.setText("TOTAL: £" + String.valueOf(total));
+            }
+        });
+        btnCashPayment.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CashPayment page = new CashPayment(total, txtProductDetails);
+                page.setVisible(true);
+            }
+        });
+        btnCardPayment.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CardPayment page = new CardPayment(total, txtProductDetails);
+                page.setVisible(true);
             }
         });
     }

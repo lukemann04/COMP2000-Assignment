@@ -50,6 +50,7 @@
         </constraints>
         <properties>
           <editable value="false"/>
+          <font size="16"/>
         </properties>
       </component>
       <component id="cfeb2" class="javax.swing.JButton" binding="btnAdminLogin">

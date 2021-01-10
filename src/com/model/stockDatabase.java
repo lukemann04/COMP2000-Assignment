@@ -197,6 +197,33 @@ public class stockDatabase {
             itemDetails.add(itemName);
             itemDetails.add(itemPrice);
             itemDetails.add(itemQuantity);
+
+            for (int i=0; i < newStock.size() - 3; i++)
+            {
+                if(newStock.get(i).equals(itemCode))
+                {
+                    newStock.set(i + 3, String.valueOf(Integer.parseInt(itemQuantity) - 1));
+                    break;
+                }
+                i = i + 3;
+            }
+
+            try
+            {
+                PrintWriter pr = new PrintWriter(stockFile);
+
+                for (int i=0; i<newStock.size() ; i++)
+                {
+                    pr.println(newStock.get(i));
+                }
+                pr.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                System.out.println("An error occurred.");
+            }
+
         } catch (NumberFormatException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -225,7 +252,7 @@ public class stockDatabase {
                     needMoreItems.add("Name: " + tempName);
                     needMoreItems.add("Price: " + tempPrice);
                     needMoreItems.add("Quantity: " + tempQuantity);
-                    break;
+                    needMoreItems.add(" ");
                 }
             }
         } catch (NumberFormatException e) {
