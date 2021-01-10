@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import com.model.*;
 
@@ -51,10 +50,8 @@ public class KioskDisplay extends JFrame {
                 stockDatabase itemSearch = new stockDatabase();
                 itemSearch.searchStock(Integer.parseInt(txtCodeInput.getText()));
                 txtProductDetails.setModel(model);
-                //model.addElement(itemSearch.itemCode);
                 model.addElement("Item: " + itemSearch.itemName);
                 model.addElement("Price: £" +itemSearch.itemPrice);
-                //model.addElement(itemSearch.itemQuantity);
                 total = total + Double.parseDouble(itemSearch.itemPrice);
                 txtTotal.setText("TOTAL: £" + String.valueOf(total));
             }
@@ -74,8 +71,4 @@ public class KioskDisplay extends JFrame {
             }
         });
     }
-    /*public static void main(String[] args) {
-        KioskDisplay page = new KioskDisplay();
-        page.setVisible(true);
-    }*/
 }

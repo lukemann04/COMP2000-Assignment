@@ -1,7 +1,5 @@
 package com.model;
 
-import com.view.StaffArea;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,25 +12,16 @@ public class stockDatabase {
     public String itemPrice;
     public String itemQuantity;
     public String[] temp = new String[0];
-    //private static Scanner x;
-    File stockFile = new File("C:\\Users\\User\\Documents\\GitHub\\COMP2000-Assignment\\src\\com\\stockDatabase.txt");
+    File stockFile = new File("src/com/model/stockDatabase.txt");
 
     public void updateStock() {
-        /*newStock.add(newItemCode);
-        newStock.add(newItemName);
-        newStock.add(newItemPrice);*/
         stock.add(newStock);
     }
 
     public void replenishStock(Integer rStockCode, Integer rStockQuantity) {
-        //String id = "";
-        //String name = "";
-        //String quantity = "";
         Integer n = 0;
-        //Integer m = 0;
         Integer found = 0;
         Integer k = null;
-        //String tempValue = "";
 
         try {
             Scanner reader = new Scanner(stockFile);

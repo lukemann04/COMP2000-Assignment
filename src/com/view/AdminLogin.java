@@ -28,7 +28,7 @@ public class AdminLogin extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 //Check Details
                 try {
-                    File myObj = new File("C:\\Users\\User\\Documents\\GitHub\\COMP2000-Assignment\\src\\com\\admins.txt");
+                    File myObj = new File("src/com/model/admins.txt");
                     Scanner reader = new Scanner(myObj);
                     String data;
                     String pwd = new String(txtPassword.getPassword());
