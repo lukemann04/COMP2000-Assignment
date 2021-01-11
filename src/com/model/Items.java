@@ -6,12 +6,12 @@ public class Items {
     private double itemPrice;
     private int itemStock;
 
-    public Items(int theItemCode, String theItemName, double theItemPrice, int theItemStock)
+    public Items(int newItemCode, String newItemName, double newItemPrice, int newItemStock)
     {
-        itemCode = theItemCode;
-        itemName = theItemName;
-        itemPrice = theItemPrice;
-        itemStock = theItemStock;
+        itemCode = newItemCode;
+        itemName = newItemName;
+        itemPrice = newItemPrice;
+        itemStock = newItemStock;
     }
 
     public int getItemCode() { return itemCode; }
