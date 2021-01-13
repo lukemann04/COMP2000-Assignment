@@ -54,6 +54,7 @@ public class StaffArea extends JFrame{
     public void checkStock(){
         stockDatabase check = new stockDatabase();
         txtNeedsStock.setModel(model);
+        model.removeAllElements();
         model.addAll(check.checkStock());
     }
 }
